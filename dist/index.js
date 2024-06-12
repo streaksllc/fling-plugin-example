@@ -290,7 +290,7 @@ const ue = {
   init() {
     console.log("Hello from flint-plugin!");
   },
-  renderCommandItems: ({ setOpen: e }) => [
+  renderCommandItems: ({ setOpen: e, page: t }) => t !== "root" ? [] : [
     {
       value: "Hello World",
       onSelect: async () => {

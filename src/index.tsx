@@ -8,7 +8,9 @@ const plugin: FlintPlugin = {
   init() {
     console.log("Hello from flint-plugin!");
   },
-  renderCommandItems: ({ setOpen }) => {
+  renderCommandItems: ({ setOpen, page }) => {
+    if (page !== "root") return [];
+
     return [
       {
         value: "Hello World",
