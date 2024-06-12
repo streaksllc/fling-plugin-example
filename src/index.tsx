@@ -1,5 +1,5 @@
 import { FlintPlugin, FlintWindow } from "flint-plugin";
-
+import "./index.css";
 declare const window: FlintWindow;
 
 const plugin: FlintPlugin = {
