@@ -31,8 +31,9 @@ export default defineConfig(({ mode }) => ({
     generateFile([
       {
         type: "json",
-        output: "./sample-plugin.json",
+        output: "./manifest.json",
         data: {
+          id: "sample-plugin",
           script: "sample-plugin.js",
           css: "sample-plugin.css",
           name: "Sample Plugin",
