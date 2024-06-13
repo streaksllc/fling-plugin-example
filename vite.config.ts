@@ -4,6 +4,11 @@ import generateFile from "vite-plugin-generate-file";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => ({
+  resolve: {
+    alias: {
+      react: "https://unpkg.com/react@18/umd/react.development.js",
+    },
+  },
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.tsx"),
@@ -13,21 +18,20 @@ export default defineConfig(({ mode }) => ({
     },
     rollupOptions: {
       // Externalize deps that shouldn't be bundled into the library.
-      // external: ["react"],
+      // external: ["react", "react-jsx-runtime"],
       sourcemap: false,
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.name == "style.css") return "sample-plugin.css";
-          return assetInfo.name;
+          return assetInfo.name ?? "";
         },
       },
     },
-
-    // Reduce bloat from legacy polyfills.
-    target: "esnext",
   },
   plugins: [
-    react(),
+    react({
+      jsxRuntime: "classic",
+    }),
     generateFile([
       {
         type: "json",
